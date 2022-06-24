@@ -1,119 +1,50 @@
-﻿Child firstChild = new Child();
-firstChild.FullName = "Child person";
-firstChild.Age = 1;
-firstChild.CourseName = "How to be a child";
+﻿ISayHello Entity = new Person();
+ISayHello OtherEntity = new Alien();
 
+Entity.SayHello();
+OtherEntity.SayHello();
 
-StepChild secondChild = new StepChild();
-secondChild.FullName = "Redheaded Stepchild";
-secondChild.Age = 1;
-secondChild.HairColour = "Red";
-
-class GrandParent
+interface ISayHello
 {
-    public string NickName { get; set; }
-}
-class Parent : GrandParent
-{
-    public string FullName { get; set; }
-    public int Age { get; set; }
+    string SayHello();
 }
 
-class Child : Parent// class Child extends Parent
+interface IMakeSandwiches
 {
-    public string CourseName { get; set; }
+    string MakeSandwiches(string mainIngredient);
 }
 
-class StepChild : Parent
+class Person : ISayHello, IMakeSandwiches
 {
-    public string HairColour { get; set; } = "Red";
+    public string Name { get; set; }
+    public string SayHello()
+    {
+        return $"Hello, my name is {Name}, the Person";
+    }
+    public string MakeSandwiches(string mainIngredient)
+    {
+        return $"I'm a person and I make sandwiches with {mainIngredient}";
+    }
+
 }
 
-class ThirdChildClass
+class Alien : ISayHello
 {
-    public int NumberOfChildren { get; set; }
+    public string AlientTitle { get; set; }
+    public string SayHello()
+    {
+        return $"Hello, my name is {AlientTitle}, the Alien"
+    }
 }
 
 
 
 
 
-
-
-
-
-
-
-//Course Welding = new Course();
-//Student Zach = new Student();
-//Welding.EnrolledStudents.Add(Zach);
-
-//public class Course
-//{
-//    public string Title { get; set; }
-//    public ICollection<Student> EnrolledStudents { get; set }
-//    public Course()
-//    {
-//        EnrolledStudents = new List<Student>();
-//    }
-//}
-
-//public class Student
-//{
-//    public string Name { get; set; }
-//    public Course EnrolledCourse { get; set; }
-//}
-
-
-//ISayHello Entity = new Person();
-//ISayHello OtherEntity = new Alien();
-
-//Entity.SayHello();
-//OtherEntity.SayHello();
-
-//interface ISayHello
-//{
-//    string SayHello();
-//}
-
-//interface IMakeSandwiches
-//{
-//    string MakeSandwiches(string mainIngredient);
-//}
-
-//class Person: ISayHello, IMakeSandwiches
-//{
-//    public string Name { get; set; }
-//    public string SayHello()
-//    {
-//        return $"Hello, my name is {Name}, the Person";
-//    }
-//    public string MakeSandwiches(string mainIngredient)
-//    {
-//        return $"I'm a person and I make sandwiches with {mainIngredient}";
-//    }
-
-//}
-
-//class Alien: ISayHello
-//{
-//    public string AlientTitle { get; set; }
-//    public string SayHello()
-//    {
-//        return $"Hello, my name is {AlientTitle}, the Alien"
-//    }
-//}
 
 // what are some things that some types of animals can do, and other can't
 // create at least 3 interfaces of an animal's specific behaviour
 // create at least 3 implementations of these interfaces
-
-
-
-
-
-
-
 
 //interface IFlameThrower
 //{
@@ -226,7 +157,7 @@ class ThirdChildClass
 
 
 //class Cat : Animal, IJump, ICrawl
-    
+
 //{
 //    public Cat()
 //    {
